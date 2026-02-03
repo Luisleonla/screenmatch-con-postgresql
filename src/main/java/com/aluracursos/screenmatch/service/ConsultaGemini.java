@@ -5,9 +5,10 @@ import com.google.genai.types.GenerateContentResponse;
 
 public class ConsultaGemini {
     public static String obtenerTraduccion(String texto){
+        String geminiApiKey = System.getenv("GEMINI_API_KEY");
         String modelo = "gemini-2.0-flash-lite";
         String prompt = "Traduce el siguiente texto al españo: " + texto;
-        Client cliente = new Client.Builder().apiKey("AIzaSyA5ATIbY8k8wY0z5pZhWFBBapR4PUBbCI0").build();
+        Client cliente = new Client.Builder().apiKey(geminiApiKey).build();
         try {
             GenerateContentResponse respuesta = cliente.models.generateContent(
                     modelo,
